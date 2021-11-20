@@ -28,11 +28,6 @@ public class JdbcUtils {
         return dataSource.getConnection();
     }
 
-    //返回连接池对象
-    public static ComboPooledDataSource getDataSource(){
-        return dataSource;
-    }
-
     //开启事务
     //获取一个Connection,设置它的setAutoCommit(false)
     //还要保证dao中使用的连接是同一个连接,和下面commit和rollback的连接也是同一个连接

@@ -13,8 +13,8 @@ public class Demo {
     public void serviceMethod(){
         try{
             JdbcUtils.beginTransaction();
-            AccountDao.update("张三", -100);
-            AccountDao.update("李四", 100);
+            AccountDao.update(1, -100);
+            AccountDao.update(2, 100);
             JdbcUtils.commitTransaction();
         } catch (Exception e) {
             try {
