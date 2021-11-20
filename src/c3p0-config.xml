@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <c3p0-config>
-    <default-cofig>
+    <named-config name="test">
         <!--连接四大参数配置-->
         <property name="jdbcUrl">jdbc:mysql://localhost:3306/mydb</property>
         <property name="driverClass">com.mysql.jdbc.Driver</property>
@@ -11,5 +11,5 @@
         <property name="initialPoolSize">10</property>
         <property name="minPoolSize">2</property>
         <property name="maxPoolSize">10</property>
-    </default-cofig>
+    </named-config>
 </c3p0-config>

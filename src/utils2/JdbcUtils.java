@@ -1,6 +1,7 @@
 package utils2;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -12,30 +13,11 @@ import java.sql.SQLException;
  */
 public class JdbcUtils {
     //c3p0连接池
-    private static ComboPooledDataSource dataSource=null;
+    private static ComboPooledDataSource dataSource = new ComboPooledDataSource("test");
 
     //事务专用连接
     private static Connection connection = null;
 
-    static {
-        try {
-            //创建连接池对象
-            dataSource= new ComboPooledDataSource();
-            //四大参数配置
-            dataSource.setDriverClass("com.mysql.jdbc.Driver");
-            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/mydb");
-            dataSource.setUser("root");
-            dataSource.setPassword("123456");
-
-            //池配置
-            dataSource.setAcquireIncrement(5);
-            dataSource.setInitialPoolSize(20);
-            dataSource.setMinPoolSize(2);
-            dataSource.setMaxPoolSize(50);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     //使用连接池返回一个连接
     public static Connection getConnection() throws SQLException {

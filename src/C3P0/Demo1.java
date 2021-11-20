@@ -46,9 +46,9 @@ public class Demo1 {
     @Test
     public void fun2() throws SQLException {
         /**
-         * 会自动加载配置文件,不用手动指定
+         * 默认的会读取不到，所以需要自己设置命名的配置文件
          */
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
+        ComboPooledDataSource dataSource = new ComboPooledDataSource("test");
         Connection connection = dataSource.getConnection();
         System.out.println(connection);
         connection.close();
