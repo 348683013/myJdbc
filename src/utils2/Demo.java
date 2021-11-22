@@ -10,10 +10,10 @@ import java.sql.SQLException;
  */
 public class Demo {
     @Test
-    public void serviceMethod() {
+    public void serviceMethod1() {
         try {
             JdbcUtils.beginTransaction();
-            double money = -200;
+            double money = 200;
             AccountDao.update(1, -money);
             AccountDao.update(2, money);
             JdbcUtils.commitTransaction();
@@ -23,6 +23,7 @@ public class Demo {
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
+            throw new RuntimeException(e);
         }
     }
 }
