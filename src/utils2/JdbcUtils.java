@@ -1,8 +1,8 @@
 package utils2;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-import org.apache.commons.dbcp2.BasicDataSource;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -26,6 +26,11 @@ public class JdbcUtils {
             return connection;
         }
         return dataSource.getConnection();
+    }
+
+    //返回dataSource
+    public static DataSource getDataSource(){
+        return dataSource;
     }
 
     //开启事务
@@ -72,5 +77,18 @@ public class JdbcUtils {
         connection.close();
         connection = null;
 
+    }
+
+    /**
+     * 释放连接
+     */
+    public static void releaseConnection(Connection con) throws SQLException {
+        //判断是否是是无连接，不是则关闭
+        if (connection == null) {
+            connection.close();
+        }
+        if (connection != con) {
+            connection.close();
+        }
     }
 }

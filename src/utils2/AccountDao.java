@@ -18,5 +18,7 @@ public class AccountDao {
         Connection connection = JdbcUtils.getConnection();
         queryRunner.update(connection, sql, params);
 
+        JdbcUtils.releaseConnection(connection);
+
     }
 }
